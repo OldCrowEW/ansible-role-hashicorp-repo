@@ -1,0 +1,33 @@
+---
+#jinja2:lstrip_blocks: True
+
+- name: Set RHEL flavor
+  set_fact:
+    rhel_flavor: >-
+      {% if ansible_distribution == 'Fedora' -%}
+        fedora
+      {%- elif ansible_distribution == 'Amazon' -%}
+        AmazonLinux
+      {%- else -%}
+        RHEL
+      {%- endif %}
+
+- name: Add Official Hashicorp Repo - Stable
+  yum_repository:
+    name: "hashicorp"
+    description: "Hashicorp Stable - $basearch"
+    file: hashicorp
+    baseurl: "https://rpm.releases.hashicorp.com/{{ rhel_flavor }}/$releasever/$basearch/stable"
+    enabled: "true"
+    gpgcheck: "yes"
+    gpgkey: "https://rpm.releases.hashicorp.com/gpg"
+
+- name: Add Official Hashicorp Repo - Test
+  yum_repository:
+    name: "hashicorp-test"
+    description: "Hashicorp Test - $basearch"
+    file: hashicorp
+    baseurl: "https://rpm.releases.hashicorp.com/{{ rhel_flavor }}/$releasever/$basearch/test"
+    enabled: "false"
+    gpgcheck: "yes"
+    gpgkey: "https://rpm.releases.hashicorp.com/gpg"

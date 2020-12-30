@@ -1,0 +1,19 @@
+---
+- name: Add Hashicorp Apt GPG signing key
+  apt_key:
+    id: "E8A032E094D8EB4EA189D270DA418C88A3219F7B"
+    url: "https://apt.releases.hashicorp.com/gpg"
+    state: "present"
+  notify: update-apt-cache
+
+
+
+- name: Add Official Hashicorp Repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    state: "present"
+
+- name: Run handlers to update Apt Cache
+  meta: flush_handlers
+
+# sources.list.d/apt_releases_hashicorp_com.list

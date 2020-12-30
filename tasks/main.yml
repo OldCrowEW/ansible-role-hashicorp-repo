@@ -1,0 +1,4 @@
+---
+# tasks file for ansible-role-hashicorp-repo
+- name: Run OS specific tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
