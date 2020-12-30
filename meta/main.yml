@@ -1,0 +1,33 @@
+galaxy_info:
+  role_name: hashicorp_repo
+  author: John Favorite
+  description: Install HashiCorp repository for officially maintained and signed packages.
+  company: n/a
+
+  license: license (BSD)
+
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Centos
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    verions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+    - hashicorp
+    - yum
+    - apt
+
+dependencies: []

@@ -1,0 +1,37 @@
+---
+#jinja2:lstrip_blocks: True
+
+- name: Set RHEL flavor
+  set_fact:
+    rhel_flavor: >-
+      {% if ansible_distribution == 'Fedora' -%}
+        fedora
+      {%- elif ansible_distribution == 'Amazon' -%}
+        AmazonLinux
+      {%- else -%}
+        RHEL
+      {%- endif %}
+
+- name: Add Official Hashicorp Repo - Stable
+  yum_repository:
+    name: "{{ yum_repository_stable_name }}"
+    description: "{{ yum_repository_stable_description }}"
+    baseurl: "{{ yum_repository_stable_baseurl }}"
+    enabled: "{{ yum_repository_stable_enabled }}"
+    gpgcheck: "{{ yum_repository_stagble_gpgcheck }}"
+    gpgkey: "{{ yum_repository_stable_gpgkey }}"
+    owner: "{{ yum_repository_stable_owner }}"
+    group: "{{ yum_repository_stable_group }}"
+    mode: "{{ yum_repository_stable_mode }}"
+
+- name: Add Official Hashicorp Repo - Test
+  yum_repository:
+    name: "{{ yum_repository_test_name }}"
+    description: "{{ yum_repository_test_description }}"
+    baseurl: "{{ yum_repository_test_baseurl }}"
+    enabled: "{{ yum_repository_test_enabled }}"
+    gpgcheck: "{{ yum_repository_test_gpgcheck }}"
+    gpgkey: "{{ yum_repository_test_gpgkey }}"
+    owner: "{{ yum_repository_test_owner }}"
+    group: "{{ yum_repository_test_group }}"
+    mode: "{{ yum_repository_test_mode }}"

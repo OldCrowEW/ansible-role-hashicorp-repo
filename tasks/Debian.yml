@@ -1,0 +1,16 @@
+---
+- name: Add Hashicorp Apt GPG signing key
+  apt_key:
+    id: "{{ apt_repository_key_id }}"
+    url: "{{ apt_repository_key_url }}"
+    state: "{{ apt_repository_key_state }}"
+  notify: update-apt-cache
+
+- name: Add Official Hashicorp Repo
+  apt_repository:
+    repo: "{{ apt_repository_repo }}"
+    state: "{{ apt_repository_status }}"
+  notify: update-apt-cache
+
+- name: Run handlers to update Apt Cache
+  meta: flush_handlers
