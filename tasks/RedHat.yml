@@ -12,24 +12,26 @@
         RHEL
       {%- endif %}
 
-# TODO: Set owner, group, mode + test
 - name: Add Official Hashicorp Repo - Stable
   yum_repository:
-    name: "hashicorp"
-    description: "Hashicorp Stable - $basearch"
-    file: hashicorp
-    baseurl: "https://rpm.releases.hashicorp.com/{{ rhel_flavor }}/$releasever/$basearch/stable"
-    enabled: "true"
-    gpgcheck: "yes"
-    gpgkey: "https://rpm.releases.hashicorp.com/gpg"
+    name: "{{ yum_repository_stable_name }}"
+    description: "{{ yum_repository_stable_description }}"
+    baseurl: "{{ yum_repository_stable_baseurl }}"
+    enabled: "{{ yum_repository_stable_enabled }}"
+    gpgcheck: "{{ yum_repository_stagble_gpgcheck }}"
+    gpgkey: "{{ yum_repository_stable_gpgkey }}"
+    owner: "{{ yum_repository_stable_owner }}"
+    group: "{{ yum_repository_stable_group }}"
+    mode: "{{ yum_repository_stable_mode }}"
 
-# TODO: Set owner, group, mode + test
 - name: Add Official Hashicorp Repo - Test
   yum_repository:
-    name: "hashicorp-test"
-    description: "Hashicorp Test - $basearch"
-    file: hashicorp
-    baseurl: "https://rpm.releases.hashicorp.com/{{ rhel_flavor }}/$releasever/$basearch/test"
-    enabled: "false"
-    gpgcheck: "yes"
-    gpgkey: "https://rpm.releases.hashicorp.com/gpg"
+    name: "{{ yum_repository_test_name }}"
+    description: "{{ yum_repository_test_description }}"
+    baseurl: "{{ yum_repository_test_baseurl }}"
+    enabled: "{{ yum_repository_test_enabled }}"
+    gpgcheck: "{{ yum_repository_test_gpgcheck }}"
+    gpgkey: "{{ yum_repository_test_gpgkey }}"
+    owner: "{{ yum_repository_test_owner }}"
+    group: "{{ yum_repository_test_group }}"
+    mode: "{{ yum_repository_test_mode }}"

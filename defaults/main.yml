@@ -1,0 +1,43 @@
+---
+# defaults file for ansible-role-hashicorp-repo
+
+arch: "amd64"
+release_address: "releases.hashicorp.com"
+
+release_url_rhel: "https://rpm.{{ release_address }}"
+release_url_debian: "https://apt.{{ release_address }}"
+
+repository_name: "hashicorp"
+apt_repository_gpgkey: "{{ release_url_debian }}/gpg"
+yum_repository_gpgcheck: "yes"
+yum_repository_gpgkey: "{{ release_url_rhel }}/gpg"
+yum_repository_owner: "root"
+yum_repository_group: "root"
+yum_repository_mode: "644"
+
+yum_repository_stable_name: "{{ repository_name }}"
+yum_repository_stable_description: "Hashicorp Stable - $basearch"
+yum_repository_stable_baseurl: "{{ release_url_rhel }}/{{ rhel_flavor }}/$releasever/$basearch/stable"
+yum_repository_stable_enabled: "true"
+yum_repository_stagble_gpgcheck: "{{ yum_repository_gpgcheck }}"
+yum_repository_stable_gpgkey: "{{ yum_repository_gpgkey }}"
+yum_repository_stable_owner: "{{ yum_repository_owner }}"
+yum_repository_stable_group: "{{ yum_repository_group }}"
+yum_repository_stable_mode: "{{ yum_repository_mode }}"
+
+yum_repository_test_name: "{{ repository_name }}-test"
+yum_repository_test_description: "Hashicorp Test - $basearch"
+yum_repository_test_baseurl: "{{ release_url_debian }}/{{ rhel_flavor }}/$releasever/$basearch/test"
+yum_repository_test_enabled: "false"
+yum_repository_test_gpgcheck: "{{ yum_repository_gpgcheck }}"
+yum_repository_test_gpgkey: "{{ yum_repository_gpgkey }}"
+yum_repository_test_owner: "{{ yum_repository_owner }}"
+yum_repository_test_group: "{{ yum_repository_group }}"
+yum_repository_test_mode: "{{ yum_repository_mode }}"
+
+apt_repository_key_id: "E8A032E094D8EB4EA189D270DA418C88A3219F7B"
+apt_repository_key_url: "{{ apt_repository_gpgkey }}"
+apt_repository_key_state: "present"
+
+apt_repository_repo: "deb [arch={{ arch }}] {{ release_url_debian }} {{ ansible_distribution_release | lower }} main"
+apt_repository_status: "present"
