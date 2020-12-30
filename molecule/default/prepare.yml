@@ -12,3 +12,4 @@
         name: "gpg-agent"
         state: "present"
       when: ansible_distribution == "Ubuntu"
+  

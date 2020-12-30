@@ -12,6 +12,7 @@
         RHEL
       {%- endif %}
 
+# TODO: Set owner, group, mode + test
 - name: Add Official Hashicorp Repo - Stable
   yum_repository:
     name: "hashicorp"
@@ -22,6 +23,7 @@
     gpgcheck: "yes"
     gpgkey: "https://rpm.releases.hashicorp.com/gpg"
 
+# TODO: Set owner, group, mode + test
 - name: Add Official Hashicorp Repo - Test
   yum_repository:
     name: "hashicorp-test"
