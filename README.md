@@ -1,6 +1,7 @@
 # ansible-role-hashicorp-repo
 
-![Workflow Molecule Badge](https://github.com/OldCrowEW/ansible-role-hashicorp-repo/workflows/.github/workflows/molecule.yml/badge.svg)
+[![Workflow Molecule Badge](https://github.com/OldCrowEW/ansible-role-hashicorp-repo/workflows/Molecule%20Test/badge.svg?event=push)](https://github.com/OldCrowEW/ansible-role-hashicorp-repo/actions?query=workflow%3AMolecule%20Test)
+
 
 This role deploys the Official Hashicorp Linux Repos. Expected usage of this role is via an Ansible dependencies call:
 
