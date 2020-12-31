@@ -8,7 +8,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_rhel_repo(host):
-    rhel_repo = host.file('/etc/yum.repos.d/hashicorp.repo')
+    apt_repo = host.file
+    (' /etc/apt/sources.list.d/apt_releases_hashicorp_com.list')
 
-    assert rhel_repo.exists
-    assert rhel_repo.is_file
+    assert apt_repo.exists
+    assert apt_repo.is_file
+
