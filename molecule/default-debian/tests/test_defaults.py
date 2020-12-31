@@ -13,4 +13,3 @@ def test_rhel_repo(host):
 
     assert apt_repo.exists
     assert apt_repo.is_file
-

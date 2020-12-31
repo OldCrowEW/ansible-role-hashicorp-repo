@@ -29,7 +29,7 @@ jobs:
         run: python3 -m pip install ansible ansible-lint flake8 molecule[docker] pytest-testinfra yamllint
 
       - name: Test with molecule
-        run: molecule test
+        run: molecule test --scenario-name ${{ matrix.distro }}
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
