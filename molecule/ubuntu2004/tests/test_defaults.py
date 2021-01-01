@@ -1,0 +1,1 @@
+../../default-debian/tests/test_defaults.py
